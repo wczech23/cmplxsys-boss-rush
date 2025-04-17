@@ -193,7 +193,7 @@ def main():
             
             
         except Exception as e:
-            print(f"Error with batch {disease}: {e}")
+            print(f"Error with gathering {disease}: {e}")
             popularity_difference = random.uniform(-10,10)
             all_data.append({'Disease':disease,'PopularityDiff':popularity_difference})
             continue
