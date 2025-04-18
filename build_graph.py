@@ -7,7 +7,7 @@ import matplotlib.colors as mcolors
 from disease_symptoms import disease_symptoms
 
 
-def build_and_plot_graph(top_n=50, remove_isolates=True):
+def build_and_plot_graph(region_code, top_n=50, remove_isolates=True):
     # reading from list of extracted search trends
     df = pd.read_csv("disease_trends_US.csv")
     # selecting the top 50 potential diseases based on search popularity
@@ -115,7 +115,7 @@ def build_and_plot_graph(top_n=50, remove_isolates=True):
     sm_nodes = cm.ScalarMappable(cmap=cm.Blues, norm=norm_nodes)
     sm_nodes.set_array([])  # needed for colorbar
     cbar_nodes = fig.colorbar(sm_nodes, ax=ax, fraction=0.046, pad=0.04, location='right')
-    cbar_nodes.set_label("Search Popularity (Normalized)", fontsize=15)
+    cbar_nodes.set_label("Search Popularity (Normalized Score)", fontsize=15)
 
     # Edge colorbar (shared symptoms)
     norm_edges = mcolors.Normalize(vmin=ew_min, vmax=ew_max)
@@ -124,7 +124,7 @@ def build_and_plot_graph(top_n=50, remove_isolates=True):
     cbar_edges = fig.colorbar(sm_edges, ax=ax, fraction=0.046, pad=0.04, location='left')
     cbar_edges.set_label("Shared Symptoms", fontsize=15)
 
-    ax.set_title(f"Top Diseases Based on Your Symptoms \nand Current Search Trends",fontsize=20)
+    ax.set_title(f"Top Diseases Based on Your Symptoms \nand Current Search Trends for {region_code}",fontsize=20)
     ax.set_axis_off()
     fig.tight_layout()
 

@@ -5,6 +5,7 @@
 # used fetched data to call visualize graph and create a chart for the user that shows cases and the similarities between diseases
 from disease_symptoms import disease_symptoms
 from disease_symptoms import unique_symptoms
+from disease_symptoms import state_abbreviations
 from fetch_rt_data import fetch_data
 from build_graph import build_and_plot_graph
 
@@ -52,10 +53,18 @@ def main():
     graph_bool = input("Would you like to make a graph of potential diseases based on search trends in the U.S?: ")
 
     if graph_bool == 'yes':
+        print("\n")
+        while(True):
+            state_abbr = input("Please enter the abbreviation for the state you live in (uppercase): ")
+            if state_abbr in state_abbreviations:
+                break
+            else:
+                print("\nThe abbreviation you entered is not in our list of US states\n")
+
         # use function to get disease data for each disease
         print("\nFetching recent data on diseases that match your symptoms... (This may take a few minutes)\n")
-        fetch_data(matching_diseases)
-        plot_ret = build_and_plot_graph()
+        fetch_data(matching_diseases, state_abbr)
+        plot_ret = build_and_plot_graph(state_abbr)
         if plot_ret == 1:
             print("There were not enough potential disease to create an effective plot")
         else:

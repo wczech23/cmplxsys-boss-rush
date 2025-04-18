@@ -1,12 +1,13 @@
-import requests
 import pandas as pd
 import random
-from datetime import datetime
 from pytrends.request import TrendReq
 import time
 
-def fetch_data(matching_diseases):
 
+
+
+def fetch_data(matching_diseases, state_abbr):
+    pd.set_option('future.no_silent_downcasting', True)
     pytrends = TrendReq(hl='en-US', tz=360, timeout=(10,25), retries=2, backoff_factor=0.5)
 
     all_data = []
@@ -17,7 +18,9 @@ def fetch_data(matching_diseases):
             sleep_time = random.uniform(7,10)
             time.sleep(sleep_time)
 
-            pytrends.build_payload([disease], cat=0, timeframe='today 12-m', geo='', gprop='')
+            geo_code = f'US-{state_abbr}'
+            # add in data to refine searching by state
+            pytrends.build_payload([disease], timeframe='today 12-m', geo=geo_code)
             data = pytrends.interest_over_time()
 
             # calculating difference in popularity today compared to year average
