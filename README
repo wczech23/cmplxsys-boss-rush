@@ -1,0 +1,14 @@
+## How to use Disease Aware
+
+### Step 1
+
+Download the files from this git repository and open them in your local folder
+
+### Step 2
+
+Run the command "source venv/bin/activate" in the terminal to access the python packages needed
+Run the command "python3 symptom_check.py" in the terminal to start the program
+
+### Step 3
+
+Respond to the text prompts in the terminal and type in information when asked, when you are done a graph containing potential diseases that match your symptoms will appear in your folder.
