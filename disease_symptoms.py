@@ -1,3 +1,4 @@
+# list of all diseases and symptoms
 disease_symptoms = {
     "COVID-19": [
         "fever", "chills", "cough", "shortness of breath", "fatigue", "muscle or body aches",
@@ -197,7 +198,7 @@ disease_symptoms = {
     ]
 }
 
-
+# list of all unique symptoms to check for the user
 unique_symptoms = [
     "abdominal pain",
     "agitation",
@@ -321,6 +322,7 @@ unique_symptoms = [
     "whooping sound"
 ]
 
+# state abbreviations to check for the user
 state_abbreviations = [
     "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA",
     "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD",

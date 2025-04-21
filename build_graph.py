@@ -1,4 +1,3 @@
-import math
 import pandas as pd
 import networkx as nx
 import matplotlib.pyplot as plt
@@ -128,6 +127,6 @@ def build_and_plot_graph(region_code, top_n=50, remove_isolates=True):
     ax.set_axis_off()
     fig.tight_layout()
 
-    # Save the figure
+    # Save the figure to the folder
     fig.savefig(f"your_disease_graph.png", dpi=150)
     plt.close(fig)

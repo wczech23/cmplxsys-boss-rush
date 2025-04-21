@@ -1,18 +1,14 @@
-# create a user_interface system that allows you to type in your symptoms and it runs a check for matches
-# offers the user a list of potential diseases, and creates a similarity graph using these potential diseases
-# with counts for each
-# users answers creates a list of possible diseases -> call fetch data to get info for each disease
-# used fetched data to call visualize graph and create a chart for the user that shows cases and the similarities between diseases
 from disease_symptoms import disease_symptoms
 from disease_symptoms import unique_symptoms
 from disease_symptoms import state_abbreviations
 from fetch_rt_data import fetch_data
 from build_graph import build_and_plot_graph
 
+# main file that the user interacts with
 def main():
     symptoms = []
     matching_diseases = set()
-
+    # opening message to user
     print("Hello, Welcome to Disease Aware. Input your symptoms and our system will offer condtions you may be facing\n")
     print("DISCLAIMER: This recommendation system is only based on listed symptoms and should not be used to diagnose a disease.\n")
     print("Please insert your symptoms one by one, when you are done, type 'done'\n")
@@ -33,6 +29,7 @@ def main():
         else:
             symptoms.append(symptom)
 
+    # checks all potential matching diseases based on symptoms
     for symptom in symptoms:
         for disease in disease_symptoms:
             if disease not in matching_diseases:
@@ -51,7 +48,7 @@ def main():
     # pause for user input
     print("For the following question, type (yes/no)")
     graph_bool = input("Would you like to make a graph of potential diseases based on search trends in the U.S?: ")
-
+    # creating graph if user asks for it
     if graph_bool == 'yes':
         print("\n")
         while(True):
